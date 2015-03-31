@@ -1,10 +1,11 @@
 # Install dependencies with Pip.
 puts-step "Installing dependencies with pip"
 echo "pip location"
-echo `which pip
+echo `which pip`
+echo "FRESH_PYTHON ==> $FRESH_PYTHON"
 [ ! "$FRESH_PYTHON" ] && bpwatch start pip_install
 [ "$FRESH_PYTHON" ] && bpwatch start pip_install_first
-`
+
 /app/.heroku/python/bin/pip install -r requirements.txt --exists-action=w --src=./.heroku/src --allow-all-external  | cleanup | indent
 
 # Smart Requirements handling
